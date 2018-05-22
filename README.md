@@ -1,2 +1,3 @@
-# IonicStarterApp
-A repository that contains test and different implementation of a tutorial app written in Ionic.
+# Ionic 3 Start Theme
+
+Ionic 3 Start Theme with 10 Pages, mock data, providers samples, Storage, Http and more...
