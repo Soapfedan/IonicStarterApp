@@ -6,16 +6,32 @@ import { UserDetail } from "../../services/user-details";
 import { AuthService } from "../../services/auth-service";
 import { User } from "../../user";
 
+
+interface user{
+email:string,
+password:string,
+name:string,
+surname:string
+}
+
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  @ViewChild("email") email;
-  @ViewChild("password") password;
+  @ViewChild("email") ema;
+  @ViewChild("password") pass;
+  
+  users:user;
 
   constructor(public nav: NavController,private userDetail:UserDetail,private authService:AuthService, public forgotCtrl: AlertController, public menu: MenuController, public toastCtrl: ToastController) {
     this.menu.swipeEnable(false);
+    this.users={
+      email:"pippo@email.it",
+      password:"password",
+      name:"Giovanni",
+      surname:"Bianchi"
+    };
   }
 
   // go to register page
@@ -25,7 +41,12 @@ export class LoginPage {
 
   // login and go to home page
   login() {
-    var userList;
+    console.log("Utente "+this.ema.value+" Password "+this.pass.value);
+    if(this.users.email == this.ema.value && this.users.password==this.pass.value){
+      console.log("Logged")
+      this.authService.storeUser(new User(this.users.name,this.users.surname));
+      this.nav.setRoot(HomePage);
+      /*
     this.userDetail.load().then((data)=>{
       userList=data;
       for (let index = 0; index < userList.length; index++) {
@@ -52,12 +73,10 @@ export class LoginPage {
           if(element["password"]==this.password.value){
             this.nav.setRoot(HomePage);
               this.authService.storeUser(new User(element["name"],element["surname"]));
-          }
-        }else{
-          console.log("User not found")
-        }
+          }*/
+      }else{
+        console.log("User not found")
       }
-    });
   }
 
   forgotPass() {

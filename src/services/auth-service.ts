@@ -27,17 +27,7 @@ export class AuthService {
     }
 
     getUser(){
-        let user:User; //= new User("Nome","Cognome");
-        return new Promise((resolve,reject)=>{
-            this.storage.get('user').then((data) => {
-                console.log("Ehi ecco l'utente che hai chiesto "+data.name+" "+data.surname);
-                user = new User(data.name,data.surname);
-                resolve(user);
-              }).catch(()=>{
-              user = new User("Prova","Prova");
-              reject(user);
-            });
-        });
+            return this.storage.get('user');
     }
 
     storeUser(user:User){
