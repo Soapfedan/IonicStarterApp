@@ -28,6 +28,8 @@ import { UserPage } from "../pages/user/user";
 import { UserService } from '../services/user-service';
 import { AuthService } from '../services/auth-service';
 import { UserDetail } from "../services/user-details";
+import { SecureStorageProvider } from '../providers/secure-storage/secure-storage';
+import { SecureStorage } from "@ionic-native/secure-storage";
 
 // import services
 // end import services
@@ -88,7 +90,9 @@ import { UserDetail } from "../services/user-details";
     WeatherProvider,
     UserService,
     AuthService,
-    UserDetail
+    UserDetail,
+    SecureStorageProvider,
+    SecureStorage
   ]
 })
 

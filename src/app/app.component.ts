@@ -11,6 +11,7 @@ import { LocalWeatherPage } from "../pages/local-weather/local-weather";
 import { UserPage } from "../pages/user/user";
 import { AuthService } from "../services/auth-service";
 import { User } from "../user";
+import { SecureStorage, SecureStorageObject } from "@ionic-native/secure-storage";
 
 export interface MenuItem {
     title: string;
@@ -62,6 +63,11 @@ export class MyApp {
 
       //*** Control Keyboard
       this.keyboard.disableScroll(true);
+
+   
+
+
+
 
     });
   }

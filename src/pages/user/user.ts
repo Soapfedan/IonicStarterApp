@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { UserService } from '../../services/user-service';
+import { SecureStorageProvider } from '../../providers/secure-storage/secure-storage';
 
 /**
  * Generated class for the UserPage page.
@@ -18,7 +19,7 @@ import { UserService } from '../../services/user-service';
 export class UserPage {
   users:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private storage: Storage,private userService:UserService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private storage: Storage,private secStorage:SecureStorageProvider,private userService:UserService) {
     this.storage.keys().then((data) => {
       console.log(data);
     });
@@ -26,10 +27,7 @@ export class UserPage {
   };
   
   loadUser(){
-    this.userService.load()
-    .then(data => {
-      this.users=data;
-    });
+    this.secStorage.setKey("Ciao");
   }
 
   ionViewDidLoad() {
